@@ -9,10 +9,10 @@ The compiler itself is also written in Java. It uses javacc to generate the toke
 Documentation
 =============
 
-For a complete design report see ./docs/report.pdf.
+For a complete design report see `./docs/report.pdf`.
 
 
 How to Run the Compiler
 =======
 
-To run the project, import the directory ./MatchStmt to eclipse and run A2MainRunner.java. The compiler will try to compile ./MatchStmt/src/se701/StudentSample.javax. The compiled code will be written to ./MatchStmt/src/se701/StudentSample.java.
+To run the project, import the directory `./MatchStmt` to eclipse and run `A2MainRunner.java`. The compiler will try to compile `./MatchStmt/src/se701/StudentSample.javax`. The compiled code will be written to `./MatchStmt/src/se701/StudentSample.java`.
