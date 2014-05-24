@@ -1,0 +1,60 @@
+package se701;
+
+public class StudentSample {
+		Object[] objs = { new Window(), new Button(),
+					new RadioBox(), new Menu(), "Fun" };
+	public static class Window {
+		public void paint() {
+			System.out.println("Painting window");
+		}
+	}
+	public static class Button {
+		public void set_inactive() {
+			System.out.println("Setting button inactive");
+		}
+	}
+	public static class RadioBox {
+		public void tune() {
+			System.out.println("Tuning");
+		}
+	}
+	public static class Menu {
+		public void add_dish() {
+			System.out.println("Adding to menu");
+		}
+	}
+	public static void main(String[] arg) {
+		Object[] objs = { new Window(), new Button(),
+					new RadioBox(), new Menu(), "Fun" };
+		for (int i = 0; i < objs.length; i++)
+			do_stuff(objs[i]);
+	}
+	public static void do_stuff(Object b) {
+		match b {
+		case Window : {
+			System.out.println("Do stuff with Window");
+			b.paint();
+		}
+		case StudentSample.Button : {
+			System.out.println("Do stuff with Button");
+			b.set_inactive();
+		}
+		case RadioBox : {
+			System.out.println("Do stuff with RadioBox");
+			Object obj = new Menu();
+			match obj {
+			case Menu: {
+				b.tune();
+				obj.add_dish();
+			}
+			}
+		}
+		case Menu : {
+			System.out.println("Do stuff with Menu");
+		}
+		default : {
+			System.out.println("Do nothing");
+		}
+		}
+	}
+}

@@ -1,0 +1,63 @@
+
+public class Test3 {
+	int a; 
+	
+	public void foo(boolean x) { // OK: x parameter, x is also class member
+		//a = false;  // ERROR: incompatible types
+		x = true;   // allowed
+		bar();
+		x = true;
+		//b = 123;    // ERROR: out of scope
+	}
+	
+	boolean x;
+	
+	public void bar() {
+		int b; 
+		{
+			i.w = 45;  // ERROR: not declared yet
+			//b = 123; // OK
+			//b.e.c = 1;
+			b = 1;
+		}
+		//c = 1;
+		int c = 123; // OK
+		{
+			//int c = 123; // ERROR: duplicate variable
+		}
+	}
+	
+	//public void bar(int de) {} // ERROR: duplicate method declaration bar()
+	public void bar(int abc) {} // OK: method overloading
+	
+	private void test() {
+		i.hello(); // OK
+		hello();	// ERROR: undefined
+		k.hello();  // OK: using inheritance scope
+	}
+
+	private Inner i; // OK
+	private InnerSub k; // OK
+	//private Outer j; // ERROR: Unknown type "Outer" 
+	
+	class Inner {
+		public int w;
+		public int c;
+		public void hello(){ 
+			//x = false; // OK
+		} 
+	}
+	
+	class InnerSub extends Inner {
+		public void hi() {
+			w = 123; // OK: w is inherited 
+		}
+	}
+	
+	class Another {
+		public void bye() {
+			i.w = 123; // OK
+			//i.x = true; // ERROR: x is not a member of Inner class, even though x is accessible from within Inner
+		}
+	}
+}
